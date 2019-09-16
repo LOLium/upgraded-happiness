@@ -14,6 +14,7 @@ public class PressurePlate : MonoBehaviour
 
     [SerializeField]
     GameObject door;
+    
 
     private void Start()
     {
@@ -22,23 +23,32 @@ public class PressurePlate : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnTriggerEnter(Collider abc)
+    private IEnumerator OnTriggerEnter(Collider abc)
     {
         if (abc.gameObject.tag == "Player" && !isOpen)
         {
-            isOpen = true;
             door_animation("Open");
             audioSource.PlayOneShot(audioclip, volume);
+            yield return new WaitForSeconds(5);
+            isOpen = true;
+            //if(true)
+            //{
+            //    door_animation("Close");
+            //    audioSource.PlayOneShot(audioclip, volume);
+            //    yield return new WaitForSeconds(5);
+            //    isOpen = false;
+            //}
         }
     }
 
-    private void OnTriggerExit(Collider abc)
+    private IEnumerator OnTriggerExit(Collider abc)
     {
         if(isOpen)
         {
-            isOpen = false;
             door_animation("Close");
             audioSource.PlayOneShot(audioclip, volume);
+            yield return new WaitForSeconds(5);
+            isOpen = false;
         }
     }
 
