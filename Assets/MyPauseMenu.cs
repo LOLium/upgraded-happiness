@@ -22,6 +22,7 @@ public class MyPauseMenu : MonoBehaviour
 
     public void doquit()
     {
+        Debug.Log("Quit");
         Application.Quit();
     }
 }
