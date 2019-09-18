@@ -20,9 +20,4 @@ public class MyPauseMenu : MonoBehaviour
         networkManagerForMenu.StopHost();
     }
 
-    public void doquit()
-    {
-        Debug.Log("Quit");
-        Application.Quit();
-    }
 }
