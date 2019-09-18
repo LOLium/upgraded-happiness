@@ -25,12 +25,14 @@ public class PressurePlate : MonoBehaviour
 
     private IEnumerator OnTriggerEnter(Collider abc)
     {
-        if (abc.gameObject.tag == "Player" && !isOpen)
+        if (isOpen == false && abc.gameObject.tag == "Player")
         {
             door_animation("Open");
             audioSource.PlayOneShot(audioclip, volume);
-            yield return new WaitForSeconds(5);
             isOpen = true;
+            print("is opne true");
+            yield return new WaitForSeconds(6f);
+            
             //if(true)
             //{
             //    door_animation("Close");
@@ -47,8 +49,10 @@ public class PressurePlate : MonoBehaviour
         {
             door_animation("Close");
             audioSource.PlayOneShot(audioclip, volume);
-            yield return new WaitForSeconds(5);
+            
             isOpen = false;
+            print("is opne false");
+            yield return new WaitForSeconds(6f);
         }
     }
 
